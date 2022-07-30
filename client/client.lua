@@ -70,7 +70,7 @@ Citizen.CreateThread(function()
 				awayFromObject = false
 				DrawText3Ds(objectPos.x, objectPos.y, objectPos.z + 1.0, "~g~J~w~ - Place Dynamite")
 				if IsControlJustReleased(0, 0xF3830D8E) then -- [J]
-					TriggerEvent('rsg_rhodesbankheist:client:boom')
+					TriggerEvent('rsg_casinovaultheist:client:boom')
 					dynamiteused = true
 				end
 			end
@@ -82,8 +82,8 @@ Citizen.CreateThread(function()
 end)
 
 -- blow vault doors
-RegisterNetEvent('rsg_rhodesbankheist:client:boom')
-AddEventHandler('rsg_rhodesbankheist:client:boom', function()
+RegisterNetEvent('rsg_casinovaultheist:client:boom')
+AddEventHandler('rsg_casinovaultheist:client:boom', function()
 	if cooldownSecondsRemaining == 0 then
 		exports['qbr-core']:TriggerCallback('QBCore:HasItem', function(hasItem)
 			if hasItem then
@@ -100,10 +100,10 @@ AddEventHandler('rsg_rhodesbankheist:client:boom', function()
 				FreezeEntityPosition(prop,true)
 				exports['qbr-core']:Notify(8, 'Bank Robbery', 10000, 'explosives set, stand well back', 'toast_log_blips', 'blip_robbery_bank', 'COLOR_WHITE')
 				Wait(10000)
-				AddExplosion(1282.2947, -1308.442, 77.03968, 25 , 5000.0 ,true , false , 27)
+				AddExplosion(2868.33, -1401.59, 52.37, 231.39 , 5000.0 ,true , false , 27)
 				DeleteObject(prop)
 				Citizen.InvokeNative(0x6BAB9442830C7F53, 3483244267, 0)
-				TriggerEvent('rsg_rhodesbankheist:client:policenpc')
+				TriggerEvent('rsg_casinovaultheist:client:policenpc')
 				local alertcoords = GetEntityCoords(PlayerPedId())
 				local blipname = 'bank robbery'
 				local alertmsg = 'bank robbery in progress'
@@ -121,15 +121,15 @@ end)
 ------------------------------------------------------------------------------------------------------------------------
 
 Citizen.CreateThread(function()
-	exports['qbr-core']:createPrompt('vault1', vector3(1288.6381, -1313.991, 77.039779), 0xF3830D8E, 'Loot Vault', {
+	exports['qbr-core']:createPrompt('vault1', vector3(2868.33, -1401.59, 52.37), 0xF3830D8E, 'Loot Vault', {
 		type = 'client',
-		event = 'rsg_rhodesbankheist:client:checkvault1',
+		event = 'rsg_casinovaultheist:client:checkvault1',
 		args = {},
 	})
 end)
 
 -- loot vault1
-RegisterNetEvent('rsg_rhodesbankheist:client:checkvault1', function()
+RegisterNetEvent('rsg_casinovaultheist:client:checkvault1', function()
 	local player = PlayerPedId()
 	SetCurrentPedWeapon(player, `WEAPON_UNARMED`, true)
 	if vault1 == false then
@@ -145,7 +145,7 @@ RegisterNetEvent('rsg_rhodesbankheist:client:checkvault1', function()
 		}, {}, {}, function() -- Done
 			ClearPedTasks(player)
 			SetCurrentPedWeapon(player, `WEAPON_UNARMED`, true)
-			TriggerServerEvent('rsg_rhodesbankheist:server:reward')
+			TriggerServerEvent('rsg_casinovaultheist:server:reward')
 			vault1 = true
 		end)
 	else
@@ -158,13 +158,13 @@ end)
 Citizen.CreateThread(function()
 	exports['qbr-core']:createPrompt('vault2', vector3(1286.2711, -1315.305, 77.039764), 0xF3830D8E, 'Loot Vault', {
 		type = 'client',
-		event = 'rsg_rhodesbankheist:client:checkvault2',
+		event = 'rsg_casinovaultheist:client:checkvault2',
 		args = {},
 	})
 end)
 
 -- loot vault2
-RegisterNetEvent('rsg_rhodesbankheist:client:checkvault2', function()
+RegisterNetEvent('rsg_casinovaultheist:client:checkvault2', function()
 	local player = PlayerPedId()
 	SetCurrentPedWeapon(player, `WEAPON_UNARMED`, true)
 	if vault2 == false then
@@ -180,7 +180,7 @@ RegisterNetEvent('rsg_rhodesbankheist:client:checkvault2', function()
 		}, {}, {}, function() -- Done
 			ClearPedTasks(player)
 			SetCurrentPedWeapon(player, `WEAPON_UNARMED`, true)
-			TriggerServerEvent('rsg_rhodesbankheist:server:reward')
+			TriggerServerEvent('rsg_casinovaultheist:server:reward')
 			vault2 = true
 		end)
 	else
@@ -197,8 +197,8 @@ function modelrequest( model )
 end
 
 -- start mission npcs
-RegisterNetEvent('rsg_rhodesbankheist:client:policenpc')
-AddEventHandler('rsg_rhodesbankheist:client:policenpc', function()
+RegisterNetEvent('rsg_casinovaultheist:client:policenpc')
+AddEventHandler('rsg_casinovaultheist:client:policenpc', function()
 	for z, x in pairs(Config.HeistNpcs) do
 	while not HasModelLoaded( GetHashKey(Config.HeistNpcs[z]["Model"]) ) do
 		Wait(500)

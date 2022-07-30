@@ -1,17 +1,16 @@
 Config = {}
 
 Config.VaultDoors = {
-	1634148892, -- gate locked (no access)
-	2058564250, -- corridor door (use lockpick)
-	3483244267, -- vault door (use dynamite)
+	1962482653, -- gate locked (no access)
+	2181772801, -- vault door (use dynamite)
 }
 
 Config.HeistNpcs = {
-	[1] = { ["Model"] = "RE_POLICECHASE_MALES_01", ["Pos"] = vector3(1298.1922, -1298.921, 77.028564 -1), ["Heading"] = 323.39672 },
-	[2] = { ["Model"] = "RE_POLICECHASE_MALES_01", ["Pos"] = vector3(1291.1708, -1293.379, 76.439674 -1), ["Heading"] = 306.5007 },
-	[3] = { ["Model"] = "RE_POLICECHASE_MALES_01", ["Pos"] = vector3(1278.746, -1311.409, 76.929656 -1), ["Heading"] = 141.41909 },
-	[4] = { ["Model"] = "RE_POLICECHASE_MALES_01", ["Pos"] = vector3(1290.0343, -1304.887, 81.971908 -1), ["Heading"] = 140.40957 },
-	[5] = { ["Model"] = "RE_POLICECHASE_MALES_01", ["Pos"] = vector3(1297.2199, -1304.808, 77.041122 -1), ["Heading"] = 65.686851 },
+	[1] = { ["Model"] = "RE_POLICECHASE_MALES_01", ["Pos"] = vector3(2866.12, -1405.68, 52.42 -1), ["Heading"] = 47.75 },
+	[2] = { ["Model"] = "RE_POLICECHASE_MALES_01", ["Pos"] = vector3(2871.65, -1398.34, 52.43 -1), ["Heading"] = 32.39 },
+	[3] = { ["Model"] = "RE_POLICECHASE_MALES_01", ["Pos"] = vector3(2861.7, -1391.36, 52.61 -1), ["Heading"] = 87.35 },
+	[4] = { ["Model"] = "RE_POLICECHASE_MALES_01", ["Pos"] = vector3(2857.39, -1397.39, 52.6 -1), ["Heading"] = 29.81 },
+	[5] = { ["Model"] = "RE_POLICECHASE_MALES_01", ["Pos"] = vector3(2862.98, -1397.07, 52.53 -1), ["Heading"] = 56.68 },
 }
 
 -- -1 DOORSTATE_INVALID,

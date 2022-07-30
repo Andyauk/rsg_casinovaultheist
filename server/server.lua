@@ -1,8 +1,8 @@
 local sharedItems = exports['qbr-core']:GetItems()
 
 -- give reward
-RegisterServerEvent('rsg_rhodesbankheist:server:reward')
-AddEventHandler('rsg_rhodesbankheist:server:reward', function()
+RegisterServerEvent('rsg_casinovaultheist:server:reward')
+AddEventHandler('rsg_casinovaultheist:server:reward', function()
     local src = source
     local Player = exports['qbr-core']:GetPlayer(src)
 	local randomNumber = math.random(1,3)
