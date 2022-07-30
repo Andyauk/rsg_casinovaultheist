@@ -156,7 +156,7 @@ end)
 ------------------------------------------------------------------------------------------------------------------------
 
 Citizen.CreateThread(function()
-	exports['qbr-core']:createPrompt('vault2', vector3(2865.52, -1399.16, 52.45), 0xF3830D8E, 'Loot Vault', {
+	exports['qbr-core']:createPrompt('vault2', vector3(2865.52, -1399.16, 52.45), 0xF3830D8E, 'Loot Desk', {
 		type = 'client',
 		event = 'rsg_casinovaultheist:client:checkvault2',
 		args = {},
