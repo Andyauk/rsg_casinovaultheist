@@ -156,7 +156,7 @@ end)
 ------------------------------------------------------------------------------------------------------------------------
 
 Citizen.CreateThread(function()
-	exports['qbr-core']:createPrompt('vault2', vector3(1286.2711, -1315.305, 77.039764), 0xF3830D8E, 'Loot Vault', {
+	exports['qbr-core']:createPrompt('vault2', vector3(2865.52, -1399.16, 52.45), 0xF3830D8E, 'Loot Vault', {
 		type = 'client',
 		event = 'rsg_casinovaultheist:client:checkvault2',
 		args = {},
@@ -168,7 +168,7 @@ RegisterNetEvent('rsg_casinovaultheist:client:checkvault2', function()
 	local player = PlayerPedId()
 	SetCurrentPedWeapon(player, `WEAPON_UNARMED`, true)
 	if vault2 == false then
-		exports['qbr-core']:Progressbar("search_vault", "Stealing Gold", 10000, false, true, {
+		exports['qbr-core']:Progressbar("search_desk", "Stealing Gold", 10000, false, true, {
 			disableMovement = false,
 			disableCarMovement = false,
 			disableMouse = false,
@@ -184,7 +184,7 @@ RegisterNetEvent('rsg_casinovaultheist:client:checkvault2', function()
 			vault2 = true
 		end)
 	else
-		exports['qbr-core']:Notify(9, 'already looted this vault', 5000, 0, 'mp_lobby_textures', 'cross', 'COLOR_WHITE')
+		exports['qbr-core']:Notify(9, 'already looted this desk', 5000, 0, 'mp_lobby_textures', 'cross', 'COLOR_WHITE')
 	end
 end)
 
