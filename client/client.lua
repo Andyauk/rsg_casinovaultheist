@@ -123,13 +123,13 @@ end)
 Citizen.CreateThread(function()
 	exports['qbr-core']:createPrompt('vault1', vector3(2868.33, -1401.59, 52.37), 0xF3830D8E, 'Loot Vault', {
 		type = 'client',
-		event = 'rsg_casinovaultheist:client:checkvault1',
+		event = 'rsg_casinovaultheist:client:checkvault',
 		args = {},
 	})
 end)
 
 -- loot vault1
-RegisterNetEvent('rsg_casinovaultheist:client:checkvault1', function()
+RegisterNetEvent('rsg_casinovaultheist:client:checkvault', function()
 	local player = PlayerPedId()
 	SetCurrentPedWeapon(player, `WEAPON_UNARMED`, true)
 	if vault1 == false then
@@ -156,19 +156,19 @@ end)
 ------------------------------------------------------------------------------------------------------------------------
 
 Citizen.CreateThread(function()
-	exports['qbr-core']:createPrompt('vault2', vector3(2865.52, -1399.16, 52.45), 0xF3830D8E, 'Loot Vault', {
+	exports['qbr-core']:createPrompt('vault2', vector3(2865.52, -1399.16, 52.45), 0xF3830D8E, 'Loot Desk', {
 		type = 'client',
-		event = 'rsg_casinovaultheist:client:checkvault2',
+		event = 'rsg_casinovaultheist:client:checkvault1',
 		args = {},
 	})
 end)
 
 -- loot vault2
-RegisterNetEvent('rsg_casinovaultheist:client:checkvault2', function()
+RegisterNetEvent('rsg_casinovaultheist:client:checkvault1', function()
 	local player = PlayerPedId()
 	SetCurrentPedWeapon(player, `WEAPON_UNARMED`, true)
 	if vault2 == false then
-		exports['qbr-core']:Progressbar("search_desk", "Stealing Gold", 10000, false, true, {
+		exports['qbr-core']:Progressbar("search_desk", "Stealing Money", 10000, false, true, {
 			disableMovement = false,
 			disableCarMovement = false,
 			disableMouse = false,
@@ -180,7 +180,7 @@ RegisterNetEvent('rsg_casinovaultheist:client:checkvault2', function()
 		}, {}, {}, function() -- Done
 			ClearPedTasks(player)
 			SetCurrentPedWeapon(player, `WEAPON_UNARMED`, true)
-			TriggerServerEvent('rsg_casinovaultheist:server:reward')
+			TriggerServerEvent('rsg_casinovaultheist:server:reward1')
 			vault2 = true
 		end)
 	else
