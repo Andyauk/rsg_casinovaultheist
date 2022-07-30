@@ -63,7 +63,7 @@ Citizen.CreateThread(function()
 	while true do
 		Citizen.Wait(0)
 		local pos, awayFromObject = GetEntityCoords(PlayerPedId()), true
-		local object = Citizen.InvokeNative(0xF7424890E4A094C0, 3483244267, 0)
+		local object = Citizen.InvokeNative(0xF7424890E4A094C0, 2181772801, 0)
 		if object ~= 0 and cooldownSecondsRemaining == 0 and dynamiteused == false then
 			local objectPos = GetEntityCoords(object)
 			if #(pos - objectPos) < 3.0 then
@@ -102,7 +102,7 @@ AddEventHandler('rsg_casinovaultheist:client:boom', function()
 				Wait(10000)
 				AddExplosion(2868.33, -1401.59, 52.37, 231.39 , 5000.0 ,true , false , 27)
 				DeleteObject(prop)
-				Citizen.InvokeNative(0x6BAB9442830C7F53, 3483244267, 0)
+				Citizen.InvokeNative(0x6BAB9442830C7F53, 2181772801, 0)
 				TriggerEvent('rsg_casinovaultheist:client:policenpc')
 				local alertcoords = GetEntityCoords(PlayerPedId())
 				local blipname = 'bank robbery'
