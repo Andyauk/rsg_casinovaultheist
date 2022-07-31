@@ -5,6 +5,7 @@ local lockpicked = false
 local dynamiteused = false
 local vault1 = false
 local vault2 = false
+local vault3 = false
 
 -- lock vault doors
 Citizen.CreateThread(function()
@@ -105,8 +106,8 @@ AddEventHandler('rsg_casinovaultheist:client:boom', function()
 				Citizen.InvokeNative(0x6BAB9442830C7F53, 2181772801, 0)
 				TriggerEvent('rsg_casinovaultheist:client:policenpc')
 				local alertcoords = GetEntityCoords(PlayerPedId())
-				local blipname = 'bank robbery'
-				local alertmsg = 'bank robbery in progress'
+				local blipname = 'casino robbery'
+				local alertmsg = 'casino robbery in progress'
 				TriggerEvent('rsg_alerts:client:lawmanalert', alertcoords, blipname, alertmsg)
 				handleCooldown()
 			else
@@ -156,7 +157,7 @@ end)
 ------------------------------------------------------------------------------------------------------------------------
 
 Citizen.CreateThread(function()
-	exports['qbr-core']:createPrompt('vault2', vector3(2865.52, -1399.16, 52.45), 0xF3830D8E, 'Loot Desk', {
+	exports['qbr-core']:createPrompt('vault2', vector3(2866.55, -1399.98, 53.21), 0xF3830D8E, 'Loot Desk', {
 		type = 'client',
 		event = 'rsg_casinovaultheist:client:checkvault1',
 		args = {},
@@ -185,6 +186,41 @@ RegisterNetEvent('rsg_casinovaultheist:client:checkvault1', function()
 		end)
 	else
 		exports['qbr-core']:Notify(9, 'already looted this desk', 5000, 0, 'mp_lobby_textures', 'cross', 'COLOR_WHITE')
+	end
+end)
+
+------------------------------------------------------------------------------------------------------------------------
+
+Citizen.CreateThread(function()
+	exports['qbr-core']:createPrompt('vault3', vector3(2864.8, -1398.55, 52.48), 0xF3830D8E, 'Loot Table', {
+		type = 'client',
+		event = 'rsg_casinovaultheist:client:checkvault2',
+		args = {},
+	})
+end)
+
+-- loot vault3
+RegisterNetEvent('rsg_casinovaultheist:client:checkvault2', function()
+	local player = PlayerPedId()
+	SetCurrentPedWeapon(player, `WEAPON_UNARMED`, true)
+	if vault3 == false then
+		exports['qbr-core']:Progressbar("search_table", "Stealing Nuggets", 10000, false, true, {
+			disableMovement = false,
+			disableCarMovement = false,
+			disableMouse = false,
+			disableCombat = true,
+		}, {
+			animDict = "script_ca@cachr@ig@ig4_vaultloot",
+			anim = "ig13_14_grab_money_front01_player_zero",
+			flags = 1,
+		}, {}, {}, function() -- Done
+			ClearPedTasks(player)
+			SetCurrentPedWeapon(player, `WEAPON_UNARMED`, true)
+			TriggerServerEvent('rsg_casinovaultheist:server:reward2')
+			vault3 = true
+		end)
+	else
+		exports['qbr-core']:Notify(9, 'already looted this table', 5000, 0, 'mp_lobby_textures', 'cross', 'COLOR_WHITE')
 	end
 end)
 
